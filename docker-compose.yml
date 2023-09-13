@@ -1,0 +1,21 @@
+version: "3"
+services:
+  node:
+    build: .
+    command: >
+      sh -c "
+      cd /home/node/app/frontend/notion-organizador-notas &&
+      npm run build &&
+      cd /home/node/app/backend &&
+      npm run server
+      "
+    working_dir: /home/node/app/backend
+    environment:
+      - NODE_ENV=production
+      - OAUTH_CLIENT_ID=4c823a5f-c9be-420c-a67c-5b777aa14b41
+      - OAUTH_CLIENT_SECRET=secret_uHJ5VXTLICzD8OdxIHFESRJE5KaE77ByMLu5RAbNpqu
+      - VITE_REDIRECT_URI=http://localhost:3000/notion-organizador-notas/app.html
+    expose:
+      - "3000"
+    ports:
+      - "3000:3000"
