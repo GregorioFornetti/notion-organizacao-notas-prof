@@ -23,16 +23,12 @@ app.get('/notion-organizador-notas', (req, res) => {
   res.sendFile(`${dist_path}/index.html`, {root: root})
 })
 
-app.get('/notion-organizador-notas/app.html', (req, res) => {
-  res.sendFile(`${dist_path}/app.html`, {root: root})
-})
-
 app.get('/notion-organizador-notas/assets/:file', (req, res) => {
   res.sendFile(`${dist_path}/notion-organizador-notas/assets/${req.params.file}`, {root: root})
 })
 
 app.post('/notion-organizador-notas/auth', (req, res) => {
-  const auth_response = fetch('https://api.notion.com/v1/oauth/token', {
+  fetch('https://api.notion.com/v1/oauth/token', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -46,9 +42,8 @@ app.post('/notion-organizador-notas/auth', (req, res) => {
   })
   .then((response) => response.json())
   .then((data) => {
-    console.log(data)
+    res.send(data.bot_id)
   })
-  console.log(req.body.code)
 })
 
 app.listen(port, () => {
