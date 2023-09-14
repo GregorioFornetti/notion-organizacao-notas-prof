@@ -15,6 +15,8 @@ services:
       - OAUTH_CLIENT_ID=4c823a5f-c9be-420c-a67c-5b777aa14b41
       - OAUTH_CLIENT_SECRET=secret_uHJ5VXTLICzD8OdxIHFESRJE5KaE77ByMLu5RAbNpqu
       - VITE_REDIRECT_URI=http://localhost:3000/notion-organizador-notas/app.html
+      - VITE_SERVER_ROOT=/notion-organizador-notas
+      - ENABLE_CORS=false
     expose:
       - "3000"
     ports:
